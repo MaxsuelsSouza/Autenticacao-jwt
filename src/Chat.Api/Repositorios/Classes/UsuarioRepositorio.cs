@@ -3,6 +3,7 @@ using Chat.Api.Dominio.DTOs;
 using Chat.Api.Dominio.Usuarios;
 using Chat.Api.Repositorios.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chat.Api.Repositorios.Classes;
 public class UsuarioRepositorio(AplicacaoContexto context) : IUsuarioRepositorio
@@ -27,9 +28,9 @@ public class UsuarioRepositorio(AplicacaoContexto context) : IUsuarioRepositorio
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Usuario>> ObterTodos()
+    public async Task<IEnumerable<Usuario>> ObterTodos()
     {
-        throw new NotImplementedException();
+        return await _context.Usuarios.AsNoTracking().OrderBy(x => x.UsuarioId).ToListAsync();
     }
 
     public Task<OkResult> Remover(Guid id)

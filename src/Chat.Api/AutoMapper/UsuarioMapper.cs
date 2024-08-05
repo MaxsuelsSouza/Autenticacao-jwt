@@ -7,6 +7,7 @@ public class UsuarioMapper : Profile
 {
     public UsuarioMapper()
     {
-        CreateMap<Usuario, UsuarioDto>().ReverseMap();
+        CreateMap<Usuario, UsuarioNovoDto>().ReverseMap();
+        CreateMap<UsuarioNovoDto, Usuario>().ReverseMap();
     }
 }

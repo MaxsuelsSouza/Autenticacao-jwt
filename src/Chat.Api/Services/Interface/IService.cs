@@ -10,7 +10,7 @@ namespace Chat.Api.Services.Interface
     {
         Task<IEnumerable<T>> ObterTodos();
         Task<T> ObterPorId(Guid id);
-        Task<T> Adicionar(T entity);
+        Task<Guid> Adicionar(T entity);
         Task<T> Atualizar(T entity);
         Task<OkResult> Remover(Guid id);
     }
